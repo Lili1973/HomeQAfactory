@@ -87,7 +87,7 @@ public class Main {
         int[] n = {10, 20, 25, 30};
         int d=10;
         int j = 0;
-        while (j < 4) {
+        while (j < 5) {
             if (n[j] == d) {
                 j++;
                 continue;
