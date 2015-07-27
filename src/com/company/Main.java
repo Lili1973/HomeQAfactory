@@ -87,7 +87,7 @@ public class Main {
         int[] n = {10, 20, 25, 30};
         int d=10;
         int j = 0;
-        while (j < 5) {
+        while (j <4 ) {
             if (n[j] == d) {
                 j++;
                 continue;
@@ -95,7 +95,12 @@ public class Main {
             System.out.println(n[j]);
             j++;
         }
+        //************************************
+        System.out.println("+++++++++++++++HOME WORK 27.07++++++++++++");
+        int a3 = 10;
+        int b3 = -8;
 
+        System.out.println("a3+b3="+(a3+b3));
 // Under key one but three
 
 	// write your code here
