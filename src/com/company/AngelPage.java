@@ -1,12 +1,13 @@
 package com.company;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class AngelPage {
 
-    public static String url= "http://oxogamestudio.com/passwd.current7.htm";
+    public static String url= "http://oxogamestudio.com/passwd.current8.htm";
     //"http://angel.net/~nic/passwd.current.html";
 
     public static void setMaster(String value) {
@@ -19,19 +20,24 @@ public class AngelPage {
         //By.xpath("//*[@name='site']"
     }
 
-    public static void generate() {
+    public static void generate() throws InterruptedException {
+        waitForVisible("//*[@value='Generate']");
         TestHelper.drv.findElement(By.xpath("//*[@value='Generate']")).click();
+
     }
 
-    public static void sendEnter() {
+    public static void sendEnter() throws InterruptedException {
+        waitForVisible("//*[@value='Generate']");
         TestHelper.drv.findElement(By.xpath("//tr[2]/td[2]/input")).sendKeys(Keys.ENTER);
         //*[@name='site']
     }
-    public static String getPassword() {
+    public static String getPassword() throws InterruptedException {
+        waitForVisible("//tr[4]/td[2]/input");
         return TestHelper.drv.findElement(By.xpath("//tr[4]/td[2]/input")).getAttribute("value");
         //input[@name='password']
     }
-    public static String getMaster() {
+    public static String getMaster() throws InterruptedException {
+       // waitForVisible("//tr[1]/td[2]/input");
         return TestHelper.drv.findElement(By.xpath("//tr[1]/td[2]/input")).getAttribute("value");
         //*[@name='master']
     }
@@ -88,17 +94,19 @@ public class AngelPage {
         }
     }*/
 
-    public static void waitForVisible() throws InterruptedException {
+    public static void waitForVisible(String xpath1) throws InterruptedException {
         for (int i=0;i<=100;i++){
-        if(!TestHelper.drv.findElement(By.xpath("//tr[4]/td[2]/input")).getAttribute("value").equals(""))
-            {
-                System.out.println("if");
-                return;
-            }
-            else {
-                Thread.sleep(100);
-                System.out.println("else");
-            }
+
+        if(TestHelper.drv.findElements(By.xpath(xpath1)).size() != 0)
+//                && !TestHelper.drv.findElement(By.xpath(xpath1)).getAttribute("value").equals("")
+        {
+            System.out.println("if");
+            return;
+        }
+        else {
+            Thread.sleep(100);
+            System.out.println("else");
+        }
 
         }
     }
