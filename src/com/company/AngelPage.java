@@ -94,19 +94,18 @@ public class AngelPage {
         }
     }*/
 
-    public static void waitForVisible(String xpath1) throws InterruptedException {
-        for (int i=0;i<=100;i++){
+    public static void waitForVisible(String xpath) throws InterruptedException {
+        for (int i=0; i<100; i++){
 
-        if(TestHelper.drv.findElements(By.xpath(xpath1)).size() != 0)
-//                && !TestHelper.drv.findElement(By.xpath(xpath1)).getAttribute("value").equals("")
-        {
-            System.out.println("if");
-            return;
-        }
-        else {
-            Thread.sleep(100);
-            System.out.println("else");
-        }
+            if(TestHelper.drv.findElements(By.xpath(xpath)).size() != 0)
+            {
+    //            System.out.println("if");
+                return;
+            }
+            else {
+                   Thread.sleep(100);
+    //            System.out.println("else");
+            }
 
         }
     }
